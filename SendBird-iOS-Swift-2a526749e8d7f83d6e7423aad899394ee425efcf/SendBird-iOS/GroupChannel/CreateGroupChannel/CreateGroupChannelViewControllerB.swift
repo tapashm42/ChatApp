@@ -101,8 +101,8 @@ class CreateGroupChannelViewControllerB: UIViewController, UIImagePickerControll
         let params = SBDGroupChannelParams()
         params.coverImage = self.coverImageData
         params.add(self.members)
+        params.customType = "Tapash"
         params.name = channelName
-        
         
         SBDGroupChannel.createChannel(with: params) { (channel, error) in
             self.hideLoadingIndicatorView()

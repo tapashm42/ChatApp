@@ -75,7 +75,6 @@ class GroupChannelsViewController: UIViewController, UITableViewDelegate, UITabl
         }) { (finished) in
             self.toastView.isHidden = true
             self.toastCompleted = true
-            
             completion?()
         }
     }
@@ -215,6 +214,8 @@ class GroupChannelsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupChannelTableViewCell") as! GroupChannelTableViewCell
         let channel = self.channels[indexPath.row]
+        print("channel nickName")
+//        channel.customType
         
         cell.channelNameLabel.text = Utils.createGroupChannelName(channel: channel)
         
@@ -409,6 +410,7 @@ class GroupChannelsViewController: UIViewController, UITableViewDelegate, UITabl
             self.channelListQuery = SBDGroupChannel.createMyGroupChannelListQuery()
             self.channelListQuery?.order = .latestLastMessage
             self.channelListQuery?.limit = 20
+            self.channelListQuery?.customTypeFilter = "Tapash"
             self.channelListQuery?.includeEmptyChannel = true
         }
         
